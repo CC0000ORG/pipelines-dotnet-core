@@ -15,18 +15,3 @@ variables:
 steps:
 - script: dotnet build --configuration $(buildConfiguration)
   displayName: 'dotnet build $(buildConfiguration)'
-
-jobs:
-  # Track deployments on the environment.
-- deployment: DeployWeb
-  displayName: deploy Web App
-  pool:
-    vmImage: 'ubuntu-latest'
-  # Creates an environment if it doesn't exist.
-  environment: 'smarthotel-dev'
-  strategy:
-    # Default deployment strategy, more coming...
-    runOnce:
-      deploy:
-        steps:
-        - script: echo my first deployment
